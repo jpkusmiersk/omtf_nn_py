@@ -19,6 +19,9 @@ import tensorflow as tf
 
 # In[2]:
 
+# print the value of the PYTHONPATH environment variable
+python_path = os.environ.get('PYTHONPATH')
+print('PYTHONPATH:', python_path)
 
 from architecture_definitions import *
 
@@ -59,6 +62,24 @@ nEpochs = 1
 trainDataDir = "/scratch_ssd/akalinow/ProgrammingProjects/MachineLearning/OMTF/data/18_12_2020/"   
 trainFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_oldSample_files_*_chunk_0.tfrecord.gzip')
 
+#inputDataPrefix =  "/eos/user/a/akalinow/Data/SingleMu/TFRecord/"
+inputDataPrefix =  "/home/kbunkow/cms_data/SingleMu/TFRecord"
+
+trainDataDir = inputDataPrefix #+"/ProgrammingProjects/MachineLearning/OMTF/data/18_12_2020/"   
+testDataDir = inputDataPrefix #+"/ProgrammingProjects/MachineLearning/OMTF/data/18_12_2020/" 
+
+#trainFileNames= glob.glob(trainDataDir+'SingleMu_OneOverPt_Feb15_chunk_0_filtered.tfrecord.gzip')
+trainFileNames= glob.glob(trainDataDir+'df.parquet_SingleMu_OneOverPt_Feb15_chunk_0.gzip')
+
+testFileNames = glob.glob(trainDataDir + 'SingleMu_OneOverPt_Feb22_chunk_0_filtered.tfrecord.gzip')
+
+print("trainDataDir", trainDataDir)
+if os.path.exists(trainDataDir):
+    print('Directory', trainDataDir, 'exists')
+else:
+    print('Directory', trainDataDir, 'does not exist')
+    exit()
+
 dataset = io.get_LUT_NN_dataset(batchSize, nEpochs, trainFileNames, 
                                 nRefLayers=nRefLayers,
                                 layer1_lut_size=layer1_lut_size,
@@ -67,7 +88,7 @@ dataset = io.get_LUT_NN_dataset(batchSize, nEpochs, trainFileNames,
                                 last_input_is_bias=last_input_is_bias,
                                 rangeFactor=rangeFactor,
                                 isTrain=True)
-
+print("dataset", dataset)
 
 # ### Model definition
 

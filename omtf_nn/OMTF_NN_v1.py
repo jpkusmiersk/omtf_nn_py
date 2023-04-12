@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 
 import pandas as pd
 
-from lutnn_py.lutnn import LutInterLayer
+from lutnn import LutInterLayer
 import plotting_functions as plf
 
 inputDataPrefix = ""
@@ -128,14 +128,30 @@ if lut_nn:
     print("layer2_input_offset", layer2_input_offset)
 
 #trainDataDir = "C:/Users/kbunk/Development/omtf_data/"
-trainDataDir = "/home/kbunkow/cms_data/OMTF_data_2020/18_12_2020"
+#trainDataDir = "/home/kbunkow/cms_data/OMTF_data_2020/18_12_2020"
    
-testDataDir = trainDataDir 
+#testDataDir = trainDataDir 
 
 #inputDataPrefix =  "/scratch_ssd/akalinow/"
-inputDataPrefix =  "/home/kbunkow/cms_data/OMTF_data_2020/18_12_2020/"
+#inputDataPrefix =  "/home/kbunkow/cms_data/OMTF_data_2020/18_12_2020/"
+
+
+#testFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_newerSample_files_1_100_chunk_0.tfrecord.gzip')
+#trainFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_oldSample_files_*_chunk_0.tfrecord.gzip')
+#trainFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_oldSample_files_1_10_chunk_0.tfrecord.gzip')
+#testFileNames =  trainFileNames #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+#testFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_newerSample_files_1_100_chunk_0.tfrecord.gzip')
+#testFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_oldSample_files_1_10_chunk_0.tfrecord.gzip') #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+#inputDataPrefix =  "/eos/user/a/akalinow/Data/SingleMu/TFRecord/"
+inputDataPrefix =  "/home/kbunkow/cms_data/SingleMu/TFRecord"
+
 trainDataDir = inputDataPrefix #+"/ProgrammingProjects/MachineLearning/OMTF/data/18_12_2020/"   
 testDataDir = inputDataPrefix #+"/ProgrammingProjects/MachineLearning/OMTF/data/18_12_2020/" 
+
+trainFileNames= glob.glob(trainDataDir+'SingleMu_OneOverPt_Feb15_chunk_0_filtered.tfrecord.gzip')
+testFileNames = glob.glob(trainDataDir + 'SingleMu_OneOverPt_Feb22_chunk_0_filtered.tfrecord.gzip')
 
 print("trainDataDir", trainDataDir)
 if os.path.exists(trainDataDir):
@@ -144,13 +160,7 @@ else:
     print('Directory', trainDataDir, 'does not exist')
     exit()
 
-testFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_newerSample_files_1_100_chunk_0.tfrecord.gzip')
-trainFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_oldSample_files_*_chunk_0.tfrecord.gzip')
-#trainFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_oldSample_files_1_10_chunk_0.tfrecord.gzip')
-#testFileNames =  trainFileNames #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-testFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_newerSample_files_1_100_chunk_0.tfrecord.gzip')
-#testFileNames = glob.glob(trainDataDir+'OMTFHits_pats0x0003_oldSample_files_1_10_chunk_0.tfrecord.gzip') #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 # Data manipulation functions
 
 columns = np.array(['muonPt', 'muonEta', 'muonPhi', 'muonCharge', 'omtfPt', 'omtfEta',
