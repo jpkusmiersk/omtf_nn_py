@@ -2,6 +2,11 @@
 
 ### LUT neural network:
 
+add machine_learning_projects/lutnn_py to the PYTHONPATH, e.g. 
+```
+export PYTHONPATH=/home/kbunkow/projects/machine_learning_projects/lutnn_py
+```
+
 Jupyter version:
 
 * check if the data is read correctly:
