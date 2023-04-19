@@ -358,6 +358,7 @@ def plotPtGenPtRec(df, plotDir, oneOverPt=False) :
     ax1[0, 0].plot(binCenters, mean_y_pulls, "k.", label=r"$p_{T}^{NN} - p_{T}^{GEN}$")#, color="black")
     ax1[0, 0].plot(binCenters, mean_y_abs_pulls, "g.", label=r"$|p{T}^{NN} - p_{T}^{GEN}|$")#, color="red")
     ax1[0, 0].plot(binCenters, mean_y_squared_pulls, "r.", label=r"$\sqrt{(p_{T}^{NN} - p_{T}^{GEN})^2}$")#, color="blue")
+    ax1[0, 0].plot([0,200], [0,0], "black")
     ax1[0, 0].grid(visible=True, which='both')
     ax1[0, 0].set_xlabel(r'$p_{T}^{GEN}$')
     ax1[0, 0].set_ylabel(r'$\Delta/p_{T}^{GEN}$')
@@ -441,6 +442,7 @@ def ptRecalibration(df, plotDir, oneOverPt, label) :
             
     fig, ax = plt.subplots(figsize=(7, 7))
     ax.plot(xedges, ptToPtCalib, linewidth=1.0)
+    ax.plot([0,ptMax*1.1], [0,ptMax*1.1], "black")
     ax.set_xlim(0, ptMax * 1.1)
     ax.set_ylim(0, ptMax * 1.1)
     
