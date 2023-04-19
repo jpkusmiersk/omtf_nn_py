@@ -2,9 +2,10 @@
 
 ### LUT neural network:
 
-add machine_learning_projects/lutnn_py to the PYTHONPATH, e.g. 
-```
-export PYTHONPATH=/home/kbunkow/projects/machine_learning_projects/lutnn_py
+Add the machine_learning_projects/lutnn_py project to the repository tree:
+```shell
+cd omtf_nn_py
+git subtree add --prefix omtf_nn/lutnn_py  ssh://git@gitlab.cern.ch:7999 machine_learning_projects/lutnn_py.git master
 ```
 
 Jupyter version:
