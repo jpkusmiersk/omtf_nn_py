@@ -1,5 +1,5 @@
 import tensorflow as tf
-import LutInterLayer
+import lutnn_py.lutnn.LutInterLayer as LutInterLayer
 
 from architecture_definitions import *
 
