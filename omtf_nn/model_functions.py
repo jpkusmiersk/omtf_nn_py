@@ -1,6 +1,5 @@
 import tensorflow as tf
-#import LutInterLayer
-from lutnn import LutInterLayer
+import LutInterLayer
 
 from architecture_definitions import *
 
@@ -45,7 +44,7 @@ def get_LUT_NN(last_input_is_bias, loss_fn):
                 staircase=False)
 
     optimizer = tf.keras.optimizers.RMSprop(learning_rate=lr_schedule) 
-    model.compile(optimizer = optimizer, loss = loss_fn)                  
+    model.compile(optimizer = optimizer, loss = loss_fn, weighted_metrics=[])                  
     return model
 ###################################################
 ###################################################
@@ -66,7 +65,7 @@ def get_Classic_NN(networkInputSize, loss_fn):
                 staircase=False)
 
     optimizer = tf.keras.optimizers.RMSprop(learning_rate=lr_schedule) 
-    model.compile(optimizer = optimizer, loss = loss_fn)                  
+    model.compile(optimizer = optimizer, loss = loss_fn, weighted_metrics=[])                  
     return model
 ###################################################
 ###################################################    

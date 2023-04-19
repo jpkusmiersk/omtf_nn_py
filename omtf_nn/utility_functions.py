@@ -6,8 +6,9 @@ import numpy as np
 ###################################################
 ###################################################
 df = pd.DataFrame(columns=["GEN_pt", "GEN_charge", "GEN_eta",
-                            "OMTF_pt", "OMTF_charge", "OMTF_quality"
-                            "NN_pt", "NN_charge","NN_prob"
+                            "OMTF_pt", "OMTF_charge", "OMTF_quality",
+                            "NN_pt", "NN_charge","NN_prob", "NN_sigma",
+                           "weight"
                             ])
 ###################################################
 ###################################################
