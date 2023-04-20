@@ -1,4 +1,5 @@
 import numpy as np
+import tensorflow as tf
 ###################################################
 ## OMTF definitions
 ###################################################
@@ -15,7 +16,7 @@ refLayers = [0, 7, 2, 6, 16, 4, 10, 11]
 # parameters of the classic NN
 dense_layer1_size = 16 * 8
 dense_layer2_size = 8 * 8
-dense_layer3_size = 8 * 6
+dense_layer3_size = 4 * 8
 dense_layer4_size = 1
 ###################################################
 ###################################################
@@ -98,5 +99,15 @@ def custom_loss3(y_true, y_pred):
     loss + tf.keras.losses.MSE(y_true[ : , 2], y_pred[ : , 2])
     return loss
 
+###################################################
+###################################################
+def loss_MAPE_MAE(y_true, y_pred):
+    loss = tf.keras.losses.MAE(y_true, y_pred)*10 
+    loss += tf.keras.losses.MAPE(y_true, y_pred)
+    return loss
+###################################################
+###################################################
+custom_objects={'loss_MAPE_MAE':loss_MAPE_MAE
+               }
 ###################################################
 ###################################################
